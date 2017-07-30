@@ -1,0 +1,36 @@
+
+problem : Find the no. of employees for each salrange bucket?
+Data: Employee Table
+
+empno sal
+----------------
+1   800
+2   2000
+3   3000
+4   4000
+5   5000
+6   2500
+
+salary <= 2000 --> Small
+4000 => salary > 2000 --> Medium
+salary > 400k --> Large 
+
+
+Sample result : 
+
+Salrange number_of_employees
+-----------------------------------------
+Small       2
+Medium   2
+Large       2
+
+#########################
+
+Solution :
+select salrange, count(salrange) as number_of_employees from (
+select empno, 
+case when sal < 2000 then 'small'
+when sal <4000 then 'medium'
+else 'large' end as salrange from emp) group by salrange;
+
+Execute the query in oracle live sql cloud : https://livesql.oracle.com/apex/f?p=590:1:7986084346385::NO:::#
