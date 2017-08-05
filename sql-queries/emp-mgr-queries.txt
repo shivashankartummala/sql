@@ -1,0 +1,71 @@
+emp (eid, ename,sal, doj, did)
+dep (did, dname,loc)
+mgr (eid, mid)
+
+1. display name of emp, name of his manager for all the employees
+2. find the most senior employee, his sal for each dept
+3. find the employe with the highest sal fro each dept.
+4. find the names of the emp and his manager, who has the max term in the comapany
+###########################################
+####################DDL#################
+create table dept(  
+  deptno     number(2,0),  
+  dname      varchar2(14),  
+  loc        varchar2(13),  
+  constraint pk_dept primary key (deptno)  
+);
+
+create table emp(  
+  empno    number(4,0),  
+  ename    varchar2(10),  
+  job      varchar2(9),  
+  mgr      number(4,0),  
+  hiredate date,  
+  sal      number(7,2),  
+  comm     number(7,2),  
+  deptno   number(2,0), 
+  constraint pk_emp primary key (empno),  
+  constraint fk_deptno foreign key (deptno) references dept (deptno)  
+);
+
+create table mgr(  
+  empno    number(4,0), 
+  mid    number(4,0),
+  constraint pk_mgr primary key (empno),
+  constraint fk_mgr foreign key (mid) references emp (empno));
+
+#################################### INSERT DATA###########################################  
+ ##################### 
+ insert into DEPT (DEPTNO, DNAME, LOC)values(10, 'ACCOUNTING', 'NEW YORK');
+ insert into dept  values(20, 'RESEARCH', 'DALLAS');
+insert into dept  values(30, 'SALES', 'CHICAGO');
+insert into dept  values(40, 'OPERATIONS', 'BOSTON');
+
+
+insert into emp  values(   7839, 'KING', 'PRESIDENT', null,   to_date('17-11-1981','dd-mm-yyyy'),   5000, null, 10 );
+insert into emp  values(   7698, 'BLAKE', 'MANAGER', 7839,   to_date('1-5-1981','dd-mm-yyyy'),   2850, null, 30  );
+insert into emp  values(   7782, 'CLARK', 'MANAGER', 7839,   to_date('9-6-1981','dd-mm-yyyy'),   2450, null, 10 );
+insert into emp  values(   7566, 'JONES', 'MANAGER', 7839,   to_date('2-4-1981','dd-mm-yyyy'),  2975, null, 20 );
+insert into emp  values(   7788, 'SCOTT', 'ANALYST', 7566,   to_date('13-JUL-87','dd-mm-rr') - 85,   3000, null, 20 );
+insert into emp  values(   7902, 'FORD', 'ANALYST', 7566,   to_date('3-12-1981','dd-mm-yyyy'),  3000, null, 20  );
+insert into emp  values(   7499, 'ALLEN', 'SALESMAN', 7698,   to_date('20-2-1981','dd-mm-yyyy'),   1600, 300, 30 );
+insert into emp  values(   7521, 'WARD', 'SALESMAN', 7698,   to_date('22-2-1981','dd-mm-yyyy'),  1250, 500, 30  );
+insert into emp  values(   7844, 'TURNER', 'SALESMAN', 7698,   to_date('8-9-1981','dd-mm-yyyy'),   1500, 0, 30 );
+insert into emp  values(   7876, 'ADAMS', 'CLERK', 7788,  to_date('13-JUL-87', 'dd-mm-rr')- 51,  1100, null, 20 );
+insert into emp  values(   7900, 'JAMES', 'CLERK', 7698,   to_date('3-12-1981','dd-mm-yyyy'),   950, null, 30' );
+insert into emp  values(   7934, 'MILLER', 'CLERK', 7782,   to_date('23-1-1982','dd-mm-yyyy'),  1300, null, 10 );
+
+insert into mgr  values(   7839, null );
+insert into mgr  values(   7698, 7839  );
+insert into mgr  values(   7782, 7839 );
+insert into mgr  values(   7566, 7839 );
+insert into mgr  values(   7788,  7566 );
+insert into mgr  values(   7902,  7566 );
+insert into mgr  values(   7499,  7698);
+insert into mgr  values(   7521,  7698 );
+insert into mgr  values(   7844,  7698 );
+insert into mgr  values(   7876,  7788 );
+insert into mgr  values(   7900,  7698 );
+insert into mgr  values(   7934,  7782);
+ 
+ ######################################################################################################################
