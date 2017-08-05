@@ -3,15 +3,24 @@ emp (eid, ename,sal, doj, did)
 dep (did, dname,loc)
 mgr (eid, mid)
 
+Write sql queries for the below questions.
 1. display name of emp, name of his manager for all the employees
-   self : select e.ename, m.ename from emp e, emp m where e.empno=m.mgr;
-   emp - mgr :  select e.ename, m.ename from emp e, (select b.empno, a.ename from emp a , mgr b where a.empno=b.mid) m where e.empno=m.empno;
+   selfjoin : select e.ename, m.ename from emp e, emp m where e.empno=m.mgr;
+   emp - mgr join:  select e.ename, m.ename from emp e, (select b.empno, a.ename from emp a , mgr b where a.empno=b.mid) m where e.empno=m.empno;
 2. find the most senior employee, his sal for each dept
     select a.deptno,a.ename, a.hiredate, a.sal from emp a where (a.deptno, a.hiredate) in (select e.deptno,min(e.hiredate) from emp e group by e.deptno); 
-3. find the employe with the highest sal fro each dept.
+3. find the employe with the highest sal from each dept.
 4. find the names of the emp and his manager, who has the max term in the comapany
-###########################################
-####################DDL#################
+5. display the name of each employee and his tenure in the company.
+6. find the employee,his salary , his manager, his managers salary where the employees salary is greater than his manager.
+7. find the employee,his tenure in company , his manager, his managers tenure in company where the employees.
+8. find the employee,his tenure in company , his manager, his managers tenure in company where the employee's tenure  is greater than his manager's.
+9. find the employee,his salary, his tenure in company , his manager, his managers salry ,his managers tenure in company where the employees where the employee's tenure  is greater than his manager's and the employees salary is greater than his manager.
+10. 
+
+
+#######################Create the below tables and insert the data into your database ##############
+####################DDL statements for creatting tables #################
 create table dept(  
   deptno     number(2,0),  
   dname      varchar2(14),  
@@ -37,9 +46,9 @@ create table mgr(
   mid    number(4,0),
   constraint pk_mgr primary key (empno),
   constraint fk_mgr foreign key (mid) references emp (empno));
-
+ ############################################################################ 
 #################################### INSERT DATA###########################################  
- ##################### 
+
  insert into DEPT (DEPTNO, DNAME, LOC)values(10, 'ACCOUNTING', 'NEW YORK');
  insert into dept  values(20, 'RESEARCH', 'DALLAS');
 insert into dept  values(30, 'SALES', 'CHICAGO');
