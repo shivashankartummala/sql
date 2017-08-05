@@ -1,3 +1,4 @@
+Note : use cloud based db for practice : https://livesql.oracle.com/apex/
 emp (eid, ename,sal, doj, did)
 dep (did, dname,loc)
 mgr (eid, mid)
