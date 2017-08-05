@@ -4,7 +4,10 @@ dep (did, dname,loc)
 mgr (eid, mid)
 
 1. display name of emp, name of his manager for all the employees
+   self : select e.ename, m.ename from emp e, emp m where e.empno=m.mgr;
+   emp - mgr :  select e.ename, m.ename from emp e, (select b.empno, a.ename from emp a , mgr b where a.empno=b.mid) m where e.empno=m.empno;
 2. find the most senior employee, his sal for each dept
+    select a.deptno,a.ename, a.hiredate, a.sal from emp a where (a.deptno, a.hiredate) in (select e.deptno,min(e.hiredate) from emp e group by e.deptno); 
 3. find the employe with the highest sal fro each dept.
 4. find the names of the emp and his manager, who has the max term in the comapany
 ###########################################
