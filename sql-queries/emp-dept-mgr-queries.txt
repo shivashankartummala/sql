@@ -16,7 +16,7 @@ Write sql queries for the below questions considering the above schema.
 7. find the employee,his tenure in company , his manager, his managers tenure in company where the employees.
 8. find the employee,his tenure in company , his manager, his managers tenure in company where the employee's tenure  is greater than his manager's.
 9. find the employee,his salary, his tenure in company , his manager, his managers salry ,his managers tenure in company where the employees where the employee's tenure  is greater than his manager's and the employees salary is greater than his manager.
-10. 
+10. display the job designations in the descing order of the hiearaarchy according to the mgr table.
 
 
 #######################Create the below tables and insert the data into your database ##############
