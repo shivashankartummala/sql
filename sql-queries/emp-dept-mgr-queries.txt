@@ -1,9 +1,9 @@
-Note : use cloud based db for practice : https://livesql.oracle.com/apex/
-emp (eid, ename,sal, doj, did)
-dep (did, dname,loc)
-mgr (eid, mid)
+Note : use oracle's cloud based db lab for practice : https://livesql.oracle.com/apex/
+emp : (empno, ename,job, mgr, hiredate, sal,comm, deptno)
+dep : (deptno, dname,loc)
+mgr :  (eid, mid)
 
-Write sql queries for the below questions.
+Write sql queries for the below questions considering the above schema.
 1. display name of emp, name of his manager for all the employees
    selfjoin : select e.ename, m.ename from emp e, emp m where e.empno=m.mgr;
    emp - mgr join:  select e.ename, m.ename from emp e, (select b.empno, a.ename from emp a , mgr b where a.empno=b.mid) m where e.empno=m.empno;
