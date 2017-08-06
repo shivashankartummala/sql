@@ -1,4 +1,5 @@
 Note : use oracle's cloud based db lab for practice : https://livesql.oracle.com/apex/
+the schema/structure of the data is as follows. [DDL, insert statements are given at the bottom.]
 emp : (empno, ename,job, mgr, hiredate, sal,comm, deptno)
 dep : (deptno, dname,loc)
 mgr :  (eid, mid)
