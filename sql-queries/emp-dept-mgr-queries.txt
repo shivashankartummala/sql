@@ -31,6 +31,9 @@ Write sql queries for the below questions considering the above schema.
 8. find the employee,his tenure in company , his manager, his managers tenure in company where the employee's tenure  is greater than his manager's.
 9. find the employee,his salary, his tenure in company , his manager, his managers salry ,his managers tenure in company where the employees where the employee's tenure  is greater than his manager's and the employees salary is greater than his manager.
 10. display the job designations in the descing order of the hiearaarchy according to the mgr table.
+11. find and display the name, salary of employee with nth hieghest salary withour using subquery.
+12. find and display the name, tenure of the employee with nth hieghest tenure in the company.
+13.find and display the name, salary of employee with nth hieghest salary wihtout using top, rowid.
 
 
 #######################Create the below tables and insert the data into your database ##############
