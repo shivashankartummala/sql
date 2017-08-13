@@ -10,9 +10,9 @@ prod_category[categoryid, categoryname]
   A. select cname, orderid, orderdate 
          from customer c, cust_order co where c.custid=co.custid and 
          co.orderdate=(select max(orderdate) from cust_order oo where co.custid=oo/custid );
-2.        
+      
          
-3. select top five customers by sales
+2. select top five customers by sales
     SELECT cname, city,
         (SELECT SUM(unitprice * quantity) FROM cust_order
             INNER JOIN
@@ -21,13 +21,13 @@ prod_category[categoryid, categoryname]
                 cust_order.custid = customer.custid) AS total
     FROM customer ORDER BY total DESC LIMIT 5;     
     
-  4. a correlated subquery in WHERE clause to find customers that have total sales more than 100K
+  3. a correlated subquery in WHERE clause to find customers that have total sales more than 100K
     A. SELECT cname, city FROM customer WHERE  100000 < (
                   SELECT SUM(unitprice * quantity) FROM orderdetails 
                      INNER JOIN
                          orderdetails ON orderdetails.orderid = cust_order.orderid
                       WHERE cust_order.custid = customer.custid);
-  5. using Having clause
+  4. using Having clause
      A. SELECT t1.categoryID, categoryName FROM products t1 INNER JOIN
             prod_category c ON c.categoryID = t1.categoryID GROUP BY categoryID
             HAVING MAX(unitprice) > ALL ( SELECT  2 * AVG(unitprice) FROM products t2 WHERE t1.categoryID = t2.categoryID)
