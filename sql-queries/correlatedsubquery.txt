@@ -2,6 +2,8 @@
 Customer[custid, cname, dob, city]
 cust_order [custid, orderid, orderdate, orderstaus,  ordertotal]
 orderdetails [orderid, itemid, unitprice, quantity]
+product [productid, productname,categoryid, unitprice]
+prod_category[categoryid, categoryname]
 
 
 1. show list of customer names with their latest order.
@@ -26,9 +28,7 @@ orderdetails [orderid, itemid, unitprice, quantity]
                          orderdetails ON orderdetails.orderid = cust_order.orderid
                       WHERE cust_order.custid = customer.custid);
   5. using Having clause
-     A. SELECT companyname, city FROM customers WHERE 100000 < (
-                         SELECT SUM(unitprice * quantity) FROM orderdetails
-                            INNER JOIN
-                                  orderdetails ON orderdetails.orderid = cust_order.orderid
-                            WHERE cust_order.custid = customer.custid);
+     A. SELECT t1.categoryID, categoryName FROM products t1 INNER JOIN
+            prod_category c ON c.categoryID = t1.categoryID GROUP BY categoryID
+            HAVING MAX(unitprice) > ALL ( SELECT  2 * AVG(unitprice) FROM products t2 WHERE t1.categoryID = t2.categoryID)
     
