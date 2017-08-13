@@ -34,6 +34,13 @@ Write sql queries for the below questions considering the above schema.
 11. find and display the name, salary of employee with nth hieghest salary withour using subquery.
 12. find and display the name, tenure of the employee with nth hieghest tenure in the company.
 13.find and display the name, salary of employee with nth hieghest salary wihtout using top, rowid.
+14. find all employees whose salary is above average for their department.
+  A. SELECT empno, name
+   FROM emp AS A
+   WHERE salary > (
+     SELECT AVG(salary)
+       FROM emp
+       WHERE deptno = emp.deptno);
 
 
 #######################Create the below tables and insert the data into your database ##############
