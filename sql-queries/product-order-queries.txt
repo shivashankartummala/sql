@@ -1,2 +1,42 @@
 
-product
+###################################
+Order_id, Customer_id, order_date, Product_id, Quantity
+O1, C1, 01-Jan- 2000, P1, 10
+O2, C2, 01-Jan- 2002, P2, 15
+O3, C3, 01-Apr- 2002, P3, 17
+O4, C4, 01-Apr- 2003, P1, 20
+O5, C4, 01-Jan- 2006, P2, 1
+O6, C1, 01-May- 2006, P5, 7
+
+
+#########################
+
+1) Write a sql which can generate the number of Orders for each year.
+2) Write a sql which will give the most ordered product
+
+3) Write a SQL which will give the customers who purchased one and only one product.
+4) Write a sql which can generate the list of customers whose total ordered units is consistently lesser
+than the previous order. As in Total Qty is nth order is less than Total qty in n-1 th order and
+qty in n-1th is less than n-2th.
+
+5) Given a billion row table, how do you add a new column and backfill the data from source without
+impacting the user?
+
+6) Let’s say you have a huge table couple of TBs and 1% of data has to be deleted, how will you do this?
+
+7) Let’s say you have a huge table couple of TBs and 10% of data has to be deleted, how will you do this?
+
+8) How will you remove every 5th Row in a million row file in Unix?
+
+9) How will you identify the column which can act as a primary key (or unique) in a file?
+
+
+############################
+
+create Table orders (Order_id Number(4,0), 
+                     Customer_id Number(4,0),
+                     order_date date, 
+                     Product_id Number(4,0),
+                     Quantity Number(8,2));
+                     
+                     
