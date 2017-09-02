@@ -1,4 +1,262 @@
+############################################
+Let’s take an example of an Employee table:
+
+CREATE TABLE Employee (
+    EmployeeID, 
+    EmployeeName, 
+    DOB, -- Date of birth
+    DOJ, -- Date of joining
+    SSN, -- Social Security Number
+    DeptID, -- Department ID
+    MgrID -- Manager ID
+)
+1. Candidate Key: is the attribute/column or a set of attributes/columns in a relation/table that qualifies for uniqueness of each tuple/row. A relation/table can have one or more than one Candidate Keys. A Candidate key is also known as a minimal Super key.
+
+Here in Employee table columns EmployeeID & SSN individually can maintain uniqueness in a table, thus are eligible for Candidate keys. The columns EmployeeName + DOB combined can also make up a Candidate Key, but there is a narrow chance that 2 Employees with same name can be born in same day.
+ 
+
+2. Primary Key: is the Candidate key attribute/column that is most suited to maintain uniqueness in a table at the tuple/row level. More about PK.
+
+Here in Employee table you can choose either EmployeeID or SSN column for a PK, EmployeeID is preferable choice because SSN is a secure (PII) value.
+ 
+
+3. Alternate Key: are the other Candidate key attribute/columns that you didn’t choose as Primary key column.
+
+Like if you choose EmployeeID as a PK then SSN would be the Alternate key.
+ 
+
+4. Super Key: is a superset of Candidate key. If you add any other attribute/column to a Candidate Key then it become a Super Key.
+
+Like EmployeeID + EmployeeName is a Super Key.
+ 
+
+5. Composite Key: If a table do have a single column that qualifies for a Candidate key, then you have to select 2 or more columns to make a row unique.
+
+Like if there is no EmployeeID or SSN columns in Employee table, then you can make EmployeeName + DOB as a Composite Primary Key. But still there can be a narrow chance of duplicate rows.
+############################################
+In the field of Relational Database design, normalization is a systematic way of ensuring that a database structure is suitable for general-purpose querying and free of certain undesirable characteristics—insertion, update, and deletion anomalies—that could lead to a loss of data integrity.
+ 
+
+According to E. F. Codd the objectives of normalization were stated as follows:
+
+1. To free the collection of relations from undesirable insertion, update and deletion dependencies.
+
+2. To reduce the need for restructuring the collection of relations as new types of data are introduced, and thus increase the life span of application programs.
+
+3. To make the relational model more informative to users.
+
+4. To make the collection of relations neutral to the query statistics, where these statistics are liable to change as time goes by.
+ 
+
+E. F. Code the inventor of Relational Model, introduced the concept of normalization (1NF at 1970, 2-3NF at 1971, then with R. F. Boyce defined the BCFN in 1974).
+
+C. Date, H. Darwin, R. Fagin, N. Lorentzos defined other higher forms upto 6NF by 2002.
+
+As of now there are total 8 normal forms, as follows:
+1. First normal form (1NF)
+2. Second normal form (2NF)
+3. Third normal form (3NF)
+4. Boyce-Codd normal form (BCNF)
+5. Fourth normal form (4NF)
+6. Fifth normal form (5NF)
+7. Domain/key normal form (DKNF)
+8. Sixth normal form (6NF)
+
+But to keep our data consistent & non-redundant the first 3 Normal Forms are sufficient.
+ 
+
+1. The 1st Normal Form:
+
+– There are no duplicate rows and each row should have a unique identifier (or Primary key). A table should be free from repeating groups.
+
+– The values in each column of a table are atomic. Meaning a field value cannot be decomposed into smaller pieces or should not be divided into parts with more than one kind of data in it.
+Like: A Person’s Name column could be further divided into First, Middle, Last Name columns.
+ 
+
+2. The 2nd Normal Form:
+
+– A table should be in 1st Normal Form.
+
+– Any Candidate key (K) and any Attribute (A) that is not a constituent of a candidate key, A depends upon whole of K rather than just part of it.
+
+Means all its non-prime attributes are functionally dependent on the whole of a candidate key.
+
+In Simple terms, any non-key columns must be dependent on the entire primary key. In the case of a composite primary key, this means that a non-key column cannot depend on only part of the composite key.
+ 
+
+3. The 3rd Normal Form:
+
+– A table should be in 2nd Normal Form.
+
+– Every non-prime attribute of R is non-transitively dependent (i.e. directly dependent) on every candidate/primary key of R.
+
+– All columns should depend directly on the primary key. Tables violate the Third Normal Form when one column depends on another column, which in turn depends on the primary key (a transitive dependency).
 ###########################################
+############################################
+ DDL – Data Definition Language: statements used to Create, Alter, Drop Database Objects.
+Some examples:
+
+– CREATE: used to define new objects
+
+– ALTER: used to modify the definition of existing objects
+
+– DROP: used to remove existing entities.
+
+– TRUNCATE TABLE: used to remove all rows from a table without logging the individual row deletions.
+
+– UPDATE STATISTICS: used to update query optimization statistics on a table or indexed view.
+ 
+
+–> DML – Data Manipulation Language: statements used to Retrieve, Insert, Update, Remove and Manage data within DB objects.
+Some examples:
+
+– SELECT: retrieves one or more rows from a Table or View.
+
+– INSERT: insert one or more rows from a Table or View.
+
+– UPDATE: changes existing data in a Table or View.
+
+– DELETE: removes one or more rows from a Table or View.
+
+– BULK INSERT: imports a data file into a database Table or View in a user-specified format.
+
+– MERGE: performs Insert, Update and/or Delete operations on a Target table based on the results of a JOIN with a source table in one Transaction.
+
+– READTEXT: reads text, ntext, or image values from a text, ntext, or image column
+
+– UPDATETEXT: updates an existing text, ntext, or image field.
+
+– WRITETEXT: permits minimally logged, interactive updating of an existing text, ntext, or image column.
+ 
+
+–> DCL – Data Control Language: statements used to control the access of data stored in database and provide data security.
+Some examples:
+
+– GRANT: grants permissions on a securable to a principal.
+
+– REVOKE: removes a previously granted or denied permission.
+
+– SETUSER: allows a member of the sysadmin fixed server role or db_owner fixed database role to impersonate another user.
+
+– EXECUTE AS, statement: sets the execution context of a session.
+
+– EXECUTE AS, clause: define the execution context of the following user-defined modules: functions (except inline table-valued functions), procedures, queues, and triggers.
+
+– REVERT: switches the execution context back to the caller of the last EXECUTE AS statement.
+
+– OPEN MASTER KEY: opens the Database Master Key of the current database.
+
+– CLOSE MASTER KEY: closes the master key of the current database.
+
+– OPEN SYMMETRIC KEY: Decrypts a symmetric key and makes it available for use.
+
+– CLOSE SYMMETRIC KEY: closes a symmetric key, or closes all symmetric keys open in the current session.
+permission through its group or role memberships.
+ 
+
+–> TCL – Transaction Control Language: statements used to manage the changes made by DML statements. It allows statements to be grouped together into logical transactions.
+Some Examples:
+
+– BEGIN DISTRIBUTED TRANSACTION: specifies the start of a Transact-SQL distributed transaction managed by Microsoft Distributed Transaction Coordinator (MS DTC).
+
+– BEGIN TRANSACTION: marks the starting point of an explicit, local transaction. BEGIN TRANSACTION increments @@TRANCOUNT by 1.
+
+– COMMIT TRANSACTION: marks the end of a successful implicit or explicit transaction.
+
+– COMMIT WORK: marks the end of a transaction.
+
+– ROLLBACK TRANSACTION: rolls back an explicit or implicit transaction to the beginning of the transaction, or to a savepoint inside the transaction.
+
+– ROLLBACK WORK: rolls back a user-specified transaction to the beginning of the transaction.
+
+– SAVE TRANSACTION: sets a savepoint within a transaction.
+############################################
+Integrity constraints are used to ensure accuracy and consistency of data in a relational database. Data integrity allows to define certain data quality requirements that the data in the database needs to meet. If a user tries to insert data that doesn’t meet these requirements, the RDBMS will not allow so.
+ 
+
+A Constraint is a property assigned to a column or the set of columns in a table that prevents certain types of inconsistent data values from being placed in the column(s). Constraints are used to enforce the data integrity. This ensures the accuracy and reliability of the data in the database.
+ 
+
+CONSTRAINT = The threat or use of force to prevent, restrict, or dictate the action or thought of others.
+There are 7 types of Constraints and they are grouped in to 4 types:
+
+A. ENTITY INTEGRITY
+      1. Primary Key	
+      2. Unique Key	video
+B. REFERENTIAL INTEGRITY	
+     3. Foreign Key	
+C. DOMAIN INTEGRITY	
+     4. NOT NULL
+     5. DEFAULT
+     6. CHECK
+D. USER DEFINED INTEGRITY	
+     7. RULES
+ 
+1Primary Key (PK) Constraint:
+
+        1. A PRIMARY KEY uniquely identifies every row in a database table.
+
+       2. The PK constraint on a Table’s COLUMN enforces:
+            – – UNIQUE values and
+            – – NOT NULL values
+
+       3. Every table can have only one PK defined on a particular column (or more than 1 columns).
+
+       4. You can create PK on a Table with:
+            – – CREATE TABLE statement (in two ways)
+            – – or later with ALTER TABLE … ADD CONSTRAINT statement.
+
+       5. You can create a PK with an IDENTITY column.
+
+       6. PK can be Composite Key, containing more than one column.
+
+        PRIMARY Key and INDEXes:
+
+       7. In SQL Server on creating a Primary Key on a table, a Clustered Index is created with PK column as the Clustering Key.
+
+       8. You can also create a Primary Key with a Non-Clustered Index
+
+A foreign key (FK) is a column or combination of columns that is used to establish and enforce a link between the data in two tables, as per MSDN BoL.
+ 
+
+–> Foreign Key (FK) Constraint
+
+1. We can create a FK by defining a FOREIGN KEY constraint while Creating or modifying (Altering) a table.
+
+2. We can define a FK in a table that points to a PK or UK in another table.
+   – Like Employee & Department, shown in video-demo below.
+
+3. A FK constraint can reference columns within the same table, these are called self-referencing tables. For example: Employee & Manager Relationship.
+ 
+
+–> Referential Integrity:
+
+1. The FK constraint enforces Referential Integrity by not allowing values in the Child table outside form the domain of the Parent table.
+
+2. This also disallows any changes to the Parent table, like deleting any row or modifying PK value in the Parent table.     
+
+Here in this section I’ll discuss about Domain Integrity which validates the entries for a given column in a particular table. The Domain integrity can be enforced by:
+
+1. Applying appropriate DATATYPES
+ 
+
+2. NOT NULL constraint: enforces a column to NOT accept NULL values. Which means the columns must always contain a value and you cannot insert or update a row without specifying a value for that column.
+
+For example: Employee name is mandatory while inserting an employee’s record, thus you can have [EmployeeName] column with NOT NULL constraint, like: [EmployeeName] nvarchar(100) NOT NULL
+ 
+
+3. DEFAULT constraint: can be used to Insert a default value into a column, if no other value is provided while Inserting a row. This constraint works only with INSERT statement.
+
+For example: To track the rows insert timestamp you can add this constraint to that column, like: [CreatedOn] datetime DEFAULT (getdate())
+ 
+
+4. CHECK constraint: enforces a column to have only limited and pre-defined values. Means you cannot insert or update a row with values that are not defined with this constraint.
+
+For example: An Employee gender could only be Male or Female, so you can have [Gender] column with CHECK constraint, like: [Gender] nchar(1) CHECK ([Gender] IN (‘M’, ‘F’))
+     
+############################################
+
+############################################
 What is the difference between the WHERE and HAVING clauses?
 When GROUP BY is not used, the WHERE and HAVING clauses are essentially equivalent.
 
@@ -48,6 +306,13 @@ What is the difference between the RANK() and DENSE_RANK() functions? Provide an
 The only difference between the RANK() and DENSE_RANK() functions is in cases where there is a “tie”; i.e., in cases where multiple values in a set have the same ranking. In such cases, RANK() will assign non-consecutive “ranks” to the values in the set (resulting in gaps between the integer ranking values when there is a tie), whereas DENSE_RANK() will assign consecutive ranks to the values in the set (so there will be no gaps between the integer ranking values in the case of a tie).
 
 For example, consider the set {25, 25, 50, 75, 75, 100}. For such a set, RANK() will return {1, 1, 3, 4, 4, 6} (note that the values 2 and 5 are skipped), whereas DENSE_RANK() will return {1,1,2,3,3,4}.
+
+
+
+
+############################################
+
+############################################
 
 ############################################
 
