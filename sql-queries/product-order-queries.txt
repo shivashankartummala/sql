@@ -32,6 +32,7 @@ impacting the user?
 
 
 ############################
+########### DDL ###############
 
 create Table orders (Order_id Number(4,0), 
                      Customer_id Number(4,0),
@@ -39,4 +40,13 @@ create Table orders (Order_id Number(4,0),
                      Product_id Number(4,0),
                      Quantity Number(8,2));
                      
+                     
+############### INSERT DATA #######
+insert into orders values(52,1,To_Date('01-01-2000','DD-MM-YYYY'),1100,10);
+insert into orders values(53,2,To_Date('01-01-2002','DD-MM-YYYY'),1102,15);
+insert into orders values(54,3,To_Date('01-04-2002','DD-MM-YYYY'),1103,17);
+insert into orders values(55,4,To_Date('01-04-2003','DD-MM-YYYY'),1100,20);
+insert into orders values(56,4,To_Date('01-01-2006','DD-MM-YYYY'),1102,1);
+insert into orders values(57,1,To_Date('01-05-2006','DD-MM-YYYY'),1105,7);
+###################################
                      
