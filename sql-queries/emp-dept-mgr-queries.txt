@@ -44,6 +44,13 @@ Write sql queries for the below questions considering the above schema.
                   (SELECT deptno, AVG(salary) AS department_average FROM emp GROUP BY department)
                            AS temp ON emp.depno = temp.deptno
                            WHERE emp.salary > temp.department_average;                      
+15.Write an SQL Query to print the name of the distinct employee whose DOB is between 01/01/1960 to 31/12/1975.
+   A. SELECT DISTINCT EmpName FROM Employees WHERE DOB  BETWEEN ‘01/01/1960’ AND ‘31/12/1975';
+16   Write an SQL Query find number of employees according to gender  whose DOB is between 01/01/1960 to 31/12/1975.
+
+Read more: http://www.java67.com/2013/04/10-frequently-asked-sql-query-interview-questions-answers-database.html#ixzz4rXMdaJtu
+
+
 
 
 #######################Create the below tables and insert the data into your database ##############
