@@ -1,4 +1,4 @@
-Write an SQL Query to check whether date passed to Query is the date of given format or not.
+#Write an SQL Query to check whether date passed to Query is the date of given format or not.
 
 SQL has IsDate() function which is used to check passed value is a date or not of specified format, it returns 1(true) or 0(false) accordingly. Remember ISDATE() is an MSSQL function and it may not work on Oracle, MySQL or any other database but there would be something similar.
 
@@ -6,5 +6,15 @@ SELECT  ISDATE('1/08/13') AS "MM/DD/YY";
 
 It will return 0 because passed date is not in correct format.
 
+#Write SQL Query to find duplicate rows in a database? and then write SQL query to delete them?
 
-Read more: http://www.java67.com/2013/04/10-frequently-asked-sql-query-interview-questions-answers-database.html#ixzz4rXLoGnAG
+SELECT * FROM emp a WHERE rowid = (SELECT MAX(rowid) FROM EMP b WHERE a.empno=b.empno)
+DELETE FROM emp a WHERE rowid != (SELECT MAX(rowid) FROM emp b WHERE a.empno=b.empno);
+
+# There is a table which contains two column Student and Marks, you need to find all the students, whose marks are greater than average marks i.e. list of above average students.
+SELECT student, marks from table where marks > SELECT AVG(marks) from table)
+
+
+
+Read more: http://www.java67.com/2013/04/10-frequently-asked-sql-query-interview-questions-answers-database.html#ixzz4rXNrPUiw
+
