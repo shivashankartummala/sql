@@ -1,0 +1,2 @@
+Hacker Rank sql challenge queries
+
